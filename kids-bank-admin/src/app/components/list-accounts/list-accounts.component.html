@@ -8,7 +8,7 @@
         [class.active]="i == currentIndex"
         (click)="setActiveAccount(account, i)"
       >
-        {{ account.name }}
+        {{ account.name }} {{ account.balance }}
       </li>
     </ul>
 
@@ -19,10 +19,10 @@
 
   <div class="col-md-6">
     <div *ngIf="currentAccount">
-      <app-tutorial-details
+      <app-details-account
         (refreshList)="refreshList()"
         [account]="currentAccount"
-      ></app-tutorial-details>
+      ></app-details-account>
     </div>
 
     <div *ngIf="!currentAccount">
