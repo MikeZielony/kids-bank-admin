@@ -11,13 +11,15 @@ import { AppComponent } from './app.component';
 import { DetailsAccountComponent } from './components/details-account/details-account.component';
 import { AddAccountComponent } from './components/add-account/add-account.component';
 import { ListAccountsComponent } from './components/list-accounts/list-accounts.component';
+import { OperationAccountComponent } from './components/operation-account/operation-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DetailsAccountComponent,
     AddAccountComponent,
-    ListAccountsComponent
+    ListAccountsComponent,
+    OperationAccountComponent
   ],
   imports: [
     BrowserModule,
