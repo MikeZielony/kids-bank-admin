@@ -31,8 +31,9 @@ export class DetailsAccountComponent implements OnInit, OnChanges {
 
   updateAccount(): void {
     const data = {
-      name: this.currentAccount.name,
-      balance: this.currentAccount.balance,
+       name: this.currentAccount.name,
+       balance: this.currentAccount.balance,
+      cardId: this.currentAccount.cardId,
     };
 
     this.accountService.update(this.currentAccount.key, data)

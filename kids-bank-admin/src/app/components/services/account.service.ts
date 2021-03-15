@@ -19,8 +19,8 @@ export class AccountService {
     return this.accountsRef;
   }
 
-  create(tutorial: Account): any {
-    return this.accountsRef.push(tutorial);
+  create(account: Account): any {
+    return this.accountsRef.push(account);
   }
 
   update(key: string, value: any): Promise<void> {

@@ -24,6 +24,8 @@ export class AddAccountComponent implements OnInit {
     });
   }
 
+  
+
   newAccount(): void {
     this.submitted = false;
     this.account = new Account();
