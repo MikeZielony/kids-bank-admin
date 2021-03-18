@@ -34,6 +34,7 @@ export class DetailsAccountComponent implements OnInit, OnChanges {
   }
 
   updateAccount(): void {
+    let bal = +this.currentAccount.balance;
     const data = {
       name: this.currentAccount.name,
       balance: +this.currentAccount.balance + +(this.currentAccount.operation),
@@ -46,7 +47,7 @@ export class DetailsAccountComponent implements OnInit, OnChanges {
     this.refreshList.emit();
   }else{
 
-      setTimeout(function(){ alert("no money"); }, 0);
+      setTimeout(function(){ alert('You have only : ' + bal + ' PLN!'); }, 0);
       this.refreshList.emit();}
   }
 
