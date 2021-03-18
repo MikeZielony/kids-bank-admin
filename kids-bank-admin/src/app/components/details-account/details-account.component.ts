@@ -29,16 +29,25 @@ export class DetailsAccountComponent implements OnInit, OnChanges {
     this.currentAccount = {...this.account};
   }
 
+  checkIsMoney(): boolean {
+    return (+this.currentAccount.balance + +this.currentAccount.operation) >= 0;
+  }
+
   updateAccount(): void {
     const data = {
-       name: this.currentAccount.name,
-       balance: this.currentAccount.balance,
+      name: this.currentAccount.name,
+      balance: +this.currentAccount.balance + +(this.currentAccount.operation),
       cardId: this.currentAccount.cardId,
     };
-
+    if(this.checkIsMoney()){
     this.accountService.update(this.currentAccount.key, data)
       .then(() => this.message = 'The account was updated successfully!')
       .catch(err => console.log(err));
+    this.refreshList.emit();
+  }else{
+
+      setTimeout(function(){ alert("no money"); }, 0);
+      this.refreshList.emit();}
   }
 
   deleteAccount(): void {

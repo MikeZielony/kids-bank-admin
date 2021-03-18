@@ -4,4 +4,5 @@ export class Account {
   name: string;
   balance: number;
   cardId: string;
+  operation: number;
 }
