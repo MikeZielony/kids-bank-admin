@@ -1,48 +1,18 @@
-<div *ngIf="currentAccount" class="edit-form">
-<h4>Account</h4>
+<ng-container *ngIf="currentAccount" class="edit-form">
+<h4>Account {{ currentAccount.name}} stan : {{currentAccount.balance}}</h4>
 <form>
-  <div class="form-group">
-    <label for="id">Id</label>
-    <input
-      type="text"
-      class="form-control"
-      id="id"
-      [(ngModel)]="currentAccount.id"
-      name="id"
-    />
-  </div>
   <div class="form-group">
     <label for="name">Name</label>
     <input
       type="text"
       class="form-control"
       id="name"
-      [(ngModel)]="currentAccount.name"
+      [(ngModel)]="currentAccount.operationName"
       name="name"
     />
   </div>
 
-  <div class="form-group">
-    <label for="balance">Balance</label>
-    <input
-      type="text"
-      class="form-control"
-      id="balance"
-      [(ngModel)]="currentAccount.balance"
-      name="balance"
-    />
-  </div>
 
-  <div class="form-group">
-    <label for="cardId">Card</label>
-    <input
-      type="text"
-      class="form-control"
-      id="cardId"
-      [(ngModel)]="currentAccount.cardId"
-      name="cardId"
-    />
-  </div>
 
   <div class="form-group">
     <label for="operation">Operation</label>
@@ -65,13 +35,29 @@
   Update
 </button>
 <p>{{ message }}</p>
-</div>
+</ng-container>
 
-<ul>
-  <li *ngFor="let operation of currentAccount.operations">
-    {{ operation.name}} {{operation.amount}} {{ operation.date | date : "H:mm dd-MM-y"}}
+<!--<ul>
+  <li *ngFor="let operation of currentAccount.operations"
+    [ngStyle]="{'background-color': operation.amount >= 0 ? 'green' : 'red'}">
+    {{ operation.name}} {{operation.amount}} {{ operation.date | date : "dd-MM-y H:mm "}}
   </li>
-</ul>
+</ul>-->
+
+<h2>Account operations</h2>
+
+<table [ngStyle]="">
+  <tr>
+    <th>Operation name</th>
+    <th>Amount</th>
+    <th>Date & Time</th>
+  </tr>
+  <tr *ngFor="let operation of currentAccount.operations">
+    <td>{{ operation.name}}</td>
+    <td [ngStyle]="{'background-color': operation.amount >= 0 ? 'green' : 'red'}">{{ operation.amount | currency:'PLN'}}</td>
+    <td>{{ operation.date | date : "dd-MM-y H:mm "}}</td>
+  </tr>
+</table>
 
 <ng-container *ngIf="!currentAccount">
   <br />

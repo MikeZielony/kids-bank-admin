@@ -37,12 +37,12 @@ export class DetailsAccountComponent implements OnInit, OnChanges {
 
   updateAccount(): void {
     let bal = +this.currentAccount.balance;
-    let operation: Operation = new Operation('lego',this.currentAccount.operation)
+    let operation: Operation = new Operation(this.currentAccount.operationName,this.currentAccount.operation)
     console.log(this.currentAccount);
     const data = {
       operations: [operation,...this.currentAccount.operations], // if this.currentAccount == [] {[operatio]}
       name: this.currentAccount.name,
-      balance: +this.currentAccount.balance + +(this.currentAccount.operation),
+      balance: (+this.currentAccount.balance + +(this.currentAccount.operation)).toFixed(2),
       cardId: this.currentAccount.cardId,
     };
 
