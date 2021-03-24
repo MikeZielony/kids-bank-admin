@@ -18,16 +18,16 @@
   </div>
 
   <div class="col-md-6">
-    <div *ngIf="currentAccount">
+    <ng-container *ngIf="currentAccount">
       <app-details-account
         (refreshList)="refreshList()"
         [account]="currentAccount"
       ></app-details-account>
-    </div>
+    </ng-container>
 
-    <div *ngIf="!currentAccount">
+    <ng-container *ngIf="!currentAccount">
       <br />
       <p>Please click on an Account...</p>
-    </div>
+    </ng-container>
   </div>
 </div>

@@ -67,7 +67,13 @@
 <p>{{ message }}</p>
 </div>
 
-<div *ngIf="!currentAccount">
+<ul>
+  <li *ngFor="let operation of currentAccount.operations">
+    {{ operation.name}} {{operation.amount}} {{ operation.date | date : "H:mm dd-MM-y"}}
+  </li>
+</ul>
+
+<ng-container *ngIf="!currentAccount">
   <br />
   <p>Cannot access this Account...</p>
-</div>
+</ng-container>

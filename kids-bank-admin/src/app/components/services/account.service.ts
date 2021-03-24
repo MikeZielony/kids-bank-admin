@@ -24,6 +24,7 @@ export class AccountService {
   }
 
   update(key: string, value: any): Promise<void> {
+    console.log(value);
     return this.accountsRef.update(key, value);
   }
 
@@ -34,4 +35,5 @@ export class AccountService {
   deleteAll(): Promise<void> {
     return this.accountsRef.remove();
   }
+
 }

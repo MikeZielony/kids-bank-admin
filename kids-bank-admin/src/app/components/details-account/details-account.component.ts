@@ -1,6 +1,8 @@
 import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import {AccountService} from "../services/account.service";
 import {Account} from "../../models/account.model";
+import {Operation} from "../../models/operation";
+import firebase from "firebase";
 
 @Component({
   selector: 'app-details-account',
@@ -35,11 +37,15 @@ export class DetailsAccountComponent implements OnInit, OnChanges {
 
   updateAccount(): void {
     let bal = +this.currentAccount.balance;
+    let operation: Operation = new Operation('lego',this.currentAccount.operation)
+    console.log(this.currentAccount);
     const data = {
+      operations: [operation,...this.currentAccount.operations], // if this.currentAccount == [] {[operatio]}
       name: this.currentAccount.name,
       balance: +this.currentAccount.balance + +(this.currentAccount.operation),
       cardId: this.currentAccount.cardId,
     };
+
     if(this.checkIsMoney()){
     this.accountService.update(this.currentAccount.key, data)
       .then(() => this.message = 'The account was updated successfully!')

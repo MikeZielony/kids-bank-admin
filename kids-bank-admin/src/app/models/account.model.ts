@@ -1,3 +1,6 @@
+
+import {Operation} from "./operation";
+
 export class Account {
   key: string;
   id: number;
@@ -5,4 +8,5 @@ export class Account {
   balance: number;
   cardId: string;
   operation: number;
+  operations: Operation[] = [];
 }

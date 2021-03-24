@@ -1,6 +1,11 @@
 export class Operation {
-  date: string;
-  time: string;
+  date: Date;
   name: string;
   amount: number;
+
+  constructor(name: string, amount: number) {
+    this.date = new Date();
+    this.name = name;
+    this.amount = amount;
+  }
 }

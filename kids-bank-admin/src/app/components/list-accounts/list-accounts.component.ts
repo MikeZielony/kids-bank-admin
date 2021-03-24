@@ -41,8 +41,8 @@ export class ListAccountsComponent implements OnInit {
     });
   }
 
-  setActiveAccount(tutorial, index): void {
-    this.currentAccount = tutorial;
+  setActiveAccount(account, index): void {
+    this.currentAccount = account;
     this.currentIndex = index;
   }
 
