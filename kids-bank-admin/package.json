@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~11.2.3",
     "@angular/router": "~11.2.3",
     "firebase": "^8.2.9",
+    "ngx-awesome-uploader": "^10.0.4",
     "rxjs": "^6.6.6",
     "rxjs-compat": "^6.6.6",
     "tslib": "^2.0.0",

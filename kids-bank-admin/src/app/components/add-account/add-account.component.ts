@@ -5,7 +5,7 @@ import { Account} from "../../models/account.model";
 @Component({
   selector: 'app-add-account',
   templateUrl: './add-account.component.html',
-  styleUrls: ['./add-account.component.scss']
+  styleUrls: ['./add-account.component.css']
 })
 export class AddAccountComponent implements OnInit {
 
@@ -24,7 +24,7 @@ export class AddAccountComponent implements OnInit {
     });
   }
 
-  
+
 
   newAccount(): void {
     this.submitted = false;

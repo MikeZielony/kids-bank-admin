@@ -9,3 +9,9 @@ export class Operation {
     this.amount = amount;
   }
 }
+export enum Category {
+  zabawka = 0,
+  edukacja = 1,
+  rozrywka = 2,
+  jedzenie
+}

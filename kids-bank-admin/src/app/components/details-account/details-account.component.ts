@@ -2,15 +2,24 @@ import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angula
 import {AccountService} from "../services/account.service";
 import {Account} from "../../models/account.model";
 import {Operation} from "../../models/operation";
-import firebase from "firebase";
+import { registerLocaleData } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
+registerLocaleData(localePl, 'pl');
+import {Category} from "../../models/operation";
+
 
 @Component({
   selector: 'app-details-account',
   templateUrl: './details-account.component.html',
-  styleUrls: ['./details-account.component.scss']
+  styleUrls: ['./details-account.component.css']
 })
 
+
+
 export class DetailsAccountComponent implements OnInit, OnChanges {
+
+
+
   @Input()
   account: Account;
 

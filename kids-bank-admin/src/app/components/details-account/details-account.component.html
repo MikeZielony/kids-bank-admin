@@ -1,39 +1,38 @@
 <ng-container *ngIf="currentAccount" class="edit-form">
 <h4>Account {{ currentAccount.name}} stan : {{currentAccount.balance}}</h4>
 <form>
-  <div class="form-group">
+
     <label for="name">Name</label>
     <input
       type="text"
       class="form-control"
       id="name"
       [(ngModel)]="currentAccount.operationName"
-      name="name"
+      name="name "
     />
-  </div>
 
 
 
-  <div class="form-group">
+
+
+
     <label for="operation">Operation</label>
     <input
       type="text"
       class="form-control"
       id="operation"
       [(ngModel)]="currentAccount.operation"
-      name="operation"
+      name="operation "
       />
-    </div>
+  <button type="submit" class="badge badge-success" (click)="updateAccount()">
+    Submit
+  </button>
 
 </form>
 
-<button class="badge badge-danger mr-2" (click)="deleteAccount()">
-  Delete
-</button>
 
-<button type="submit" class="badge badge-success" (click)="updateAccount()">
-  Update
-</button>
+
+
 <p>{{ message }}</p>
 </ng-container>
 
@@ -44,7 +43,7 @@
   </li>
 </ul>-->
 
-<h2>Account operations</h2>
+<h2 class="title">Account operations  {{ currentAccount.name }}  </h2>
 
 <table [ngStyle]="">
   <tr>
@@ -54,7 +53,7 @@
   </tr>
   <tr *ngFor="let operation of currentAccount.operations">
     <td>{{ operation.name}}</td>
-    <td [ngStyle]="{'background-color': operation.amount >= 0 ? 'green' : 'red'}">{{ operation.amount | currency:'PLN'}}</td>
+    <td [ngStyle]="{'background-color': operation.amount >= 0 ? '#6A994E' : '#BC4749'}">{{ operation.amount | currency:'PLN' : 'PLN'}}</td>
     <td>{{ operation.date | date : "dd-MM-y H:mm "}}</td>
   </tr>
 </table>

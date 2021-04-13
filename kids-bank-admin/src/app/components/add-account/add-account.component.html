@@ -11,6 +11,10 @@
         name="id"
       />
     </div>
+<div>
+    <ngx-awesome-uploader [adapter]="adapter" [enableCropper]="true" (uploadSuccess)="uploadSuccess($event)">
+    </ngx-awesome-uploader>
+</div>
 
     <div class="form-group">
       <label for="name">Name</label>
