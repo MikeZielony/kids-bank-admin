@@ -256,6 +256,9 @@ firebase/firestore
 
 firebase/storage
 
+ngx-awesome-uploader
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
