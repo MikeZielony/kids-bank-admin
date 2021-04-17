@@ -1,3 +1,9 @@
+import { LoginComponent} from "../components/login/login.component";
+import {Observable} from "rxjs";
+import firebase from "firebase/app";
+
+
+
 export class Operation {
   date: Date;
   name: string;
@@ -9,6 +15,7 @@ export class Operation {
     this.amount = amount;
   }
 }
+
 export enum Category {
   zabawka = 0,
   edukacja = 1,

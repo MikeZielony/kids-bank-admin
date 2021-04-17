@@ -4,13 +4,16 @@ import { ListAccountsComponent} from "./components/list-accounts/list-accounts.c
 import { AddAccountComponent} from "./components/add-account/add-account.component";
 import {DetailsAccountComponent} from "./components/details-account/details-account.component";
 import {OperationAccountComponent} from "./components/operation-account/operation-account.component";
+import {LoginComponent} from "./components/login/login.component";
+import {AuthGuard} from "./components/guards/auth.guard";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'accounts', pathMatch: 'full' },
-  { path: 'accounts', component: ListAccountsComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'accounts', component: ListAccountsComponent, canActivate: [AuthGuard] },
   { path: 'add', component: AddAccountComponent },
   { path: 'details', component: DetailsAccountComponent },
-  { path: 'operation', component: OperationAccountComponent }
+  { path: 'operation', component: OperationAccountComponent },
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

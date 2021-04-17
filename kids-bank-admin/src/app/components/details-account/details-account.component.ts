@@ -6,6 +6,7 @@ import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 registerLocaleData(localePl, 'pl');
 import {Category} from "../../models/operation";
+import { LoginComponent} from "../login/login.component";
 
 
 @Component({
@@ -27,6 +28,8 @@ export class DetailsAccountComponent implements OnInit, OnChanges {
   refreshList: EventEmitter<any> = new EventEmitter();
   currentAccount: Account = null;
   message = '';
+  login: LoginComponent;
+  owner: string
 
   constructor(private accountService: AccountService) {
   }

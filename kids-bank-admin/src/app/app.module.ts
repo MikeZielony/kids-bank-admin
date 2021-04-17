@@ -13,6 +13,7 @@ import { DetailsAccountComponent } from './components/details-account/details-ac
 import { AddAccountComponent } from './components/add-account/add-account.component';
 import { ListAccountsComponent } from './components/list-accounts/list-accounts.component';
 import { OperationAccountComponent } from './components/operation-account/operation-account.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OperationAccountComponent } from './components/operation-account/operat
     DetailsAccountComponent,
     AddAccountComponent,
     ListAccountsComponent,
-    OperationAccountComponent
+    OperationAccountComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

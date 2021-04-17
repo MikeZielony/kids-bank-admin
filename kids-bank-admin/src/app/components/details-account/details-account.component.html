@@ -1,6 +1,6 @@
 <ng-container *ngIf="currentAccount" class="edit-form">
-<h4>Account {{ currentAccount.name}} stan : {{currentAccount.balance}}</h4>
-<form>
+  <h4>Account {{ currentAccount.name}} stan : {{currentAccount.balance}}</h4>
+  <form>
 
     <label for="name">Name</label>
     <input
@@ -11,11 +11,6 @@
       name="name "
     />
 
-
-
-
-
-
     <label for="operation">Operation</label>
     <input
       type="text"
@@ -23,17 +18,15 @@
       id="operation"
       [(ngModel)]="currentAccount.operation"
       name="operation "
-      />
-  <button type="submit" class="badge badge-success" (click)="updateAccount()">
-    Submit
-  </button>
+    />
+    <button type="submit" class="badge badge-success" (click)="updateAccount()">
+      Submit
+    </button>
 
-</form>
-
-
+  </form>
 
 
-<p>{{ message }}</p>
+  <p>{{ message }}</p>
 </ng-container>
 
 <!--<ul>
@@ -53,12 +46,13 @@
   </tr>
   <tr *ngFor="let operation of currentAccount.operations">
     <td>{{ operation.name}}</td>
-    <td [ngStyle]="{'background-color': operation.amount >= 0 ? '#6A994E' : '#BC4749'}">{{ operation.amount | currency:'PLN' : 'PLN'}}</td>
+    <td
+      [ngStyle]="{'background-color': operation.amount >= 0 ? '#6A994E' : '#BC4749'}">{{ operation.amount | currency:'PLN' : 'PLN'}}</td>
     <td>{{ operation.date | date : "dd-MM-y H:mm "}}</td>
   </tr>
 </table>
 
 <ng-container *ngIf="!currentAccount">
-  <br />
+  <br/>
   <p>Cannot access this Account...</p>
 </ng-container>
