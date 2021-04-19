@@ -1,5 +1,6 @@
 <ng-container *ngIf="currentAccount" class="edit-form">
   <h4>Account {{ currentAccount.name}} stan : {{currentAccount.balance}}</h4>
+
   <form>
 
     <label for="name">Name</label>
@@ -38,17 +39,20 @@
 
 <h2 class="title">Account operations  {{ currentAccount.name }}  </h2>
 
+
 <table [ngStyle]="">
   <tr>
     <th>Operation name</th>
     <th>Amount</th>
     <th>Date & Time</th>
+    <th>Owner</th>
   </tr>
   <tr *ngFor="let operation of currentAccount.operations">
     <td>{{ operation.name}}</td>
     <td
       [ngStyle]="{'background-color': operation.amount >= 0 ? '#6A994E' : '#BC4749'}">{{ operation.amount | currency:'PLN' : 'PLN'}}</td>
     <td>{{ operation.date | date : "dd-MM-y H:mm "}}</td>
+    <td> {{ operation.owner }}</td>
   </tr>
 </table>
 

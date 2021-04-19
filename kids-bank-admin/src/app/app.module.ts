@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { DetailsAccountComponent } from './components/details-account/details-account.component';
 import { AddAccountComponent } from './components/add-account/add-account.component';
 import { ListAccountsComponent } from './components/list-accounts/list-accounts.component';
-import { OperationAccountComponent } from './components/operation-account/operation-account.component';
 import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { LoginComponent } from './components/login/login.component';
     DetailsAccountComponent,
     AddAccountComponent,
     ListAccountsComponent,
-    OperationAccountComponent,
     LoginComponent
   ],
   imports: [

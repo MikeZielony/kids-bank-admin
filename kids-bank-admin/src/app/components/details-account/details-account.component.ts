@@ -2,11 +2,15 @@ import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angula
 import {AccountService} from "../services/account.service";
 import {Account} from "../../models/account.model";
 import {Operation} from "../../models/operation";
-import { registerLocaleData } from '@angular/common';
+import {registerLocaleData} from '@angular/common';
 import localePl from '@angular/common/locales/pl';
+
 registerLocaleData(localePl, 'pl');
 import {Category} from "../../models/operation";
-import { LoginComponent} from "../login/login.component";
+import {LoginComponent} from "../login/login.component";
+import {AngularFireAuth} from "@angular/fire/auth";
+import {from} from 'rxjs';
+import {take} from 'rxjs/operators';
 
 
 @Component({
@@ -16,10 +20,7 @@ import { LoginComponent} from "../login/login.component";
 })
 
 
-
 export class DetailsAccountComponent implements OnInit, OnChanges {
-
-
 
   @Input()
   account: Account;
@@ -28,10 +29,9 @@ export class DetailsAccountComponent implements OnInit, OnChanges {
   refreshList: EventEmitter<any> = new EventEmitter();
   currentAccount: Account = null;
   message = '';
-  login: LoginComponent;
   owner: string
 
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService, public afAuth: AngularFireAuth) {
   }
 
   ngOnInit(): void {
@@ -48,26 +48,29 @@ export class DetailsAccountComponent implements OnInit, OnChanges {
   }
 
   updateAccount(): void {
-    let bal = +this.currentAccount.balance;
-    let operation: Operation = new Operation(this.currentAccount.operationName,this.currentAccount.operation)
-    console.log(this.currentAccount);
-    const data = {
-      operations: [operation,...this.currentAccount.operations], // if this.currentAccount == [] {[operatio]}
-      name: this.currentAccount.name,
-      balance: (+this.currentAccount.balance + +(this.currentAccount.operation)).toFixed(2),
-      cardId: this.currentAccount.cardId,
-    };
-
-    if(this.checkIsMoney()){
-    this.accountService.update(this.currentAccount.key, data)
-      .then(() => this.message = 'The account was updated successfully!')
-      .catch(err => console.log(err));
-    this.refreshList.emit();
-  }else{
-
-      setTimeout(function(){ alert('You have only : ' + bal + ' PLN!'); }, 0);
-      this.refreshList.emit();}
+    from(this.afAuth.currentUser).pipe(take(1)).subscribe(userData => {
+      let bal = +this.currentAccount.balance;
+      let operation: Operation = new Operation(this.currentAccount.operationName, this.currentAccount.operation, userData.displayName)
+      if (!this.checkIsMoney()) {
+        setTimeout(function () {
+          alert('You have only : ' + bal + ' PLN!');
+        }, 0);
+        return;
+      }
+      const data = {
+        operations: [operation, ...this.currentAccount.operations], // if this.currentAccount == [] {[operatio]}
+        name: this.currentAccount.name,
+        balance: (+this.currentAccount.balance + +(this.currentAccount.operation)).toFixed(2),
+        cardId: this.currentAccount.cardId,
+        owner: userData.displayName
+      };
+      this.accountService.update(this.currentAccount.key, data)
+        .then(() => this.message = 'The account was updated successfully!')
+        .catch(err => console.log(err));
+      this.refreshList.emit();
+    })
   }
+
 
   deleteAccount(): void {
     this.accountService.delete(this.currentAccount.key)

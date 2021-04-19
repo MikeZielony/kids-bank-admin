@@ -1,18 +1,14 @@
-import { LoginComponent} from "../components/login/login.component";
-import {Observable} from "rxjs";
-import firebase from "firebase/app";
-
-
-
 export class Operation {
   date: Date;
   name: string;
   amount: number;
+  owner: string;
 
-  constructor(name: string, amount: number) {
+  constructor(name: string, amount: number, owner: string) {
     this.date = new Date();
     this.name = name;
     this.amount = amount;
+    this.owner = owner;
   }
 }
 

@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import 'firebase/auth';
 import 'firebase/storage';
 import 'firebase/firestore';
+import {LoginComponent} from "../login/login.component";
 
 @Component({
   selector: 'app-list-accounts',
@@ -16,6 +17,8 @@ export class ListAccountsComponent implements OnInit {
   currentAccount = null;
   currentIndex = -1;
   title = '';
+
+
 
   constructor(private accountService: AccountService) { }
 
