@@ -14,7 +14,7 @@
   </div>
 
   <div class="card-container">
-    <a class="card" routerLink="/accounts">
+    <a *ngIf="(afAuth.authState | async) && route!=='/accounts'" class="card" routerLink="/accounts">
       <span>Manage accounts</span>
     </a>
   </div>
